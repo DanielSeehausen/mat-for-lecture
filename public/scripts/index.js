@@ -32,7 +32,7 @@ function delayedFadeIn(div, range, min=0) {
 
 function fadeLettersIn() {
   Array.from(document.getElementsByClassName("title-letter")).forEach(div => {
-    delayedFadeIn(div, 800)
+    delayedFadeIn(div, 10000)
   })
 }
 

@@ -35,7 +35,7 @@ img {
   height: fit-content;
   width: fit-content;
   padding: 25px 0;
-  font-size: 20pt;
+  font-size: 30pt;
   animation: text-wobble 20s forwards ease-in-out infinite;\
 }
 
@@ -45,7 +45,7 @@ img {
   cursor: default;
   transform: rotateY(5deg);
   color: green;
-  text-shadow: -3px 0px 0px #DfD;
+  text-shadow: -1px 0px 0px #DfD;
 }
 
 .bounce {
@@ -65,7 +65,7 @@ img {
 .row {
   padding: 0;
   margin: 0;
-  height: 30px;
+  height: 40px;
   text-align: center;
   list-style: none;
 }
@@ -73,7 +73,7 @@ img {
 .cell {
   margin: 0 0;
   height: 100%;
-  width: 30px;
+  width: 40px;
   display: inline-block;
   border: 1px dotted black;
 }
@@ -93,8 +93,8 @@ img {
 
 @keyframes text-reveal {
   0%   { transform: translateY(0px)   rotateY(1deg);  text-shadow: -1px 0px 0px #DfD; color: green; }
-  25%  { transform: translateY(-25px) rotateY(10deg); text-shadow: -3px 0px 0px #D66; color: red;}
+  25%  { transform: translateY(-10px) rotateY(10deg); text-shadow: -3px 0px 0px #D66; color: red;}
   50%  { transform: translateY(0px)   rotateY(20deg); text-shadow: -4px 0px 0px #8CD; color: blue;}
-  75%  { transform: translateY(25px)  rotateY(10deg); text-shadow: -3px 0px 0px #FC8; color: orange;}
+  75%  { transform: translateY(10px)  rotateY(10deg); text-shadow: -3px 0px 0px #FC8; color: orange;}
   100% { transform: translateY(0px)   rotateY(1deg);  text-shadow: -1px 0px 0px #DfD; color: green; }
 }
