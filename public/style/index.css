@@ -1,0 +1,97 @@
+html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+body {
+  margin: 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: #504;
+  animation: background-shimmer 20s forwards infinite;
+}
+
+div, h2, h3 {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+img {
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: fit-content;
+  padding: 25px 0;
+  font-size: 20pt;
+  animation: text-wobble 20s forwards ease-in-out infinite;\
+}
+
+.title-letter {
+  padding: 0 1px;
+  margin: 0 0;
+  cursor: default;
+  transform: rotateY(5deg);
+  color: green;
+  text-shadow: -3px 0px 0px #DfD;
+  animation: text-reveal 10s forwards ease-in-out infinite;
+}
+
+#matrix {
+  display: flex;
+  padding: 1px;
+  width: fit-content;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  border: 10px solid green;
+}
+
+.row {
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  text-align: center;
+  list-style: none;
+}
+
+.cell {
+  margin: 0 0;
+  height: 100%;
+  width: 30px;
+  display: inline-block;
+  border: 1px dotted black;
+}
+
+@keyframes background-shimmer {
+  0% { background-color: #504 }
+  33.3% { background-color: #523 }
+  66.6% { background-color: #424 }
+  100% { background-color: #504 }
+}
+
+@keyframes text-wobble {
+  0%   { transform: translateX(0px);  }
+  50%  { transform: translateX(15px); }
+  100% { transform: translateX(0px);  }
+}
+
+@keyframes text-reveal {
+  0%   { transform: translateY(0px)   rotateY(1deg);  text-shadow: -1px 0px 0px #DfD; color: green; }
+  25%  { transform: translateY(-25px) rotateY(10deg); text-shadow: -3px 0px 0px #D66; color: red;}
+  50%  { transform: translateY(0px)   rotateY(20deg); text-shadow: -4px 0px 0px #8CD; color: blue;}
+  75%  { transform: translateY(25px)  rotateY(10deg); text-shadow: -3px 0px 0px #FC8; color: orange;}
+  100% { transform: translateY(0px)   rotateY(1deg);  text-shadow: -1px 0px 0px #DfD; color: green; }
+}

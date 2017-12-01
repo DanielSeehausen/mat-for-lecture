@@ -1,0 +1,21 @@
+{
+  "name": "0828-aglo-ds",
+  "version": "1.0.0",
+  "description": "Wed   Binary Search   Merge Sort Thur   matrices   matrix helper functions   write for battle Fri   battle royal",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "start": "server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "npm-watch": "^0.3.0",
+    "ws": "^3.3.2"
+  }
+}
