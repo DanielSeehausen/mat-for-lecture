@@ -3,6 +3,7 @@ const COLCOUNT = 10
 const ROWCOUNT = 10
 const WSSERVER = 'ws://192.168.4.70:8080'
 var PLAYERVAL = 'U'
+var PLAYERCOLOR = null
 var CURRPOS = null
 var VALMAT = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -16,6 +17,27 @@ var VALMAT = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+
+// TITLE-INIT*******************************************************************
+function fadeIn(el) {
+  el.classList.add("bounce")
+  console.log('wot');
+}
+
+function delayedFadeIn(div, range, min=0) {
+  setTimeout(() => {
+    fadeIn(div)
+  }, Math.random() * range + min)
+}
+
+function fadeLettersIn() {
+  Array.from(document.getElementsByClassName("title-letter")).forEach(div => {
+    delayedFadeIn(div, 800)
+  })
+}
+
+fadeLettersIn()
+
 
 // INIT*************************************************************************
 function genMatrixHTML() {
@@ -92,11 +114,13 @@ ws.addEventListener('message', (event) => {
   if (msg.action === 'init') {
     CURRPOS = msg.data.pos
     PLAYERVAL = msg.data.val
+    PLAYERCOLOR = msg.data.color
     DOMMATRIX[CURRPOS[0]][CURRPOS[1]].innerHTML = PLAYERVAL
+    DOMMATRIX[CURRPOS[0]][CURRPOS[1]].style.backgroundColor = PLAYERCOLOR
   }
   if (msg.action === 'playerPos') {
     CURRPOS = msg.data
-    DOMMATRIX[CURRPOS[0]][CURRPOS[1]].style.backgroundColor = 'blue'
+    DOMMATRIX[CURRPOS[0]][CURRPOS[1]].style.backgroundColor = PLAYERCOLOR
   }
   if (msg.action === 'matrix') {
     VALMAT = msg.data

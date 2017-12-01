@@ -32,6 +32,7 @@ const startPositions = [
   [8, 9]
 ]
 const playerVals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].reverse()
+const playerColors = ['blue', 'red', 'yellow', 'grey', 'purple', 'cyan', 'orange', 'pink', 'black', 'green', 'violet'].reverse()
 // const gameMat = MATRIX.map(row => row.slice())
 const members = new Set()
 
@@ -49,7 +50,7 @@ wss.on('connection', (ws, req) => {
     let pos = startPositions.pop()
     const val = playerVals.pop()
     MATRIX[pos[0]][pos[1]] = val
-    ws.send(JSON.stringify({action: 'init', data: {pos: pos, val: val}}))
+    ws.send(JSON.stringify({action: 'init', data: {pos: pos, val: val, color: playerColors.pop()}}))
     emit('matrix', MATRIX)
 
     ws.on('message', (payload) => {
@@ -59,7 +60,6 @@ wss.on('connection', (ws, req) => {
         MATRIX[msg.data[0]][msg.data[1]] = val
         MATRIX[pos[0]][pos[1]] = 0
         pos = msg.data
-        MATRIX.forEach(m => console.log(m))
         emit('matrix', MATRIX)
         ws.send(JSON.stringify({action: 'playerPos', data: [msg.data[0], msg.data[1]]}))
       }

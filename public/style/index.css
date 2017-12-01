@@ -46,6 +46,9 @@ img {
   transform: rotateY(5deg);
   color: green;
   text-shadow: -3px 0px 0px #DfD;
+}
+
+.bounce {
   animation: text-reveal 10s forwards ease-in-out infinite;
 }
 
