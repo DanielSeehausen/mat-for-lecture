@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-require('./wsServer/index.js')
+require('./ws-server/ws-server.js')
 
 const root = __dirname + '/public/' // yoo no it
 

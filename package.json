@@ -9,7 +9,7 @@
     "watch": "npm-watch"
   },
   "watch": {
-    "start": "server.js"
+    "start": "ws-server/ws-server.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,5 +1,5 @@
 // CONFIG***********************************************************************
-const WSSERVER = 'ws://192.168.4.70:8080'
+const WSSERVER = 'ws://localhost:8080'
 
 // WSCONFIG*********************************************************************
 var COLCOUNT = null
@@ -80,10 +80,6 @@ function getAvailableDirections(valMat, currPos) {
   return [[-1, 0], [0, 1], [1, 0], [0, -1]].filter(jaunt => isValidMove(valMat, currPos, jaunt))
 }
 
-function move(oldPos, jaunt) {
-  return [oldPos[0] + jaunt[0], oldPos[1] + jaunt[1]]
-}
-
 // WS***************************************************************************
 const GREETING = "Client websocket opened"
 const FAREWELL = "Client websocket closed"
@@ -110,7 +106,6 @@ ws.addEventListener('message', (event) => {
     PLAYERCOLORS = msg.data.playerColors
     appendMatrix(genMatrixHTML(ROWCOUNT, COLCOUNT))
     DOMMAT = getMatrixRefs()
-    debugger
     mapValsToDom(VALMAT, DOMMAT)
   }
 
@@ -140,16 +135,16 @@ ws.addEventListener('error', (event) => {
 window.onkeyup = (e) => {
   switch (true) {
     case (true === (e.keyCode === 87 || e.keyCode === 38) && isValidMove(VALMAT, CURRPOS, [-1, 0])):
-      ws.send(JSON.stringify({action: 'move', data: move(CURRPOS, [-1, 0])}))
+      ws.send(JSON.stringify({action: 'move', direction: [-1, 0]}))
       return
     case (true === (e.keyCode === 68 || e.keyCode === 39) && isValidMove(VALMAT, CURRPOS, [0, 1])):
-      ws.send(JSON.stringify({action: 'move', data: move(CURRPOS, [0, 1])}))
+      ws.send(JSON.stringify({action: 'move', direction: [0, 1]}))
       return
     case (true === (e.keyCode === 83 || e.keyCode === 40) && isValidMove(VALMAT, CURRPOS, [1, 0])):
-      ws.send(JSON.stringify({action: 'move', data: move(CURRPOS, [1, 0])}))
+      ws.send(JSON.stringify({action: 'move', direction: [1, 0]}))
       return
     case (true === (e.keyCode === 37 || e.keyCode === 65) && isValidMove(VALMAT, CURRPOS, [0, -1])):
-      ws.send(JSON.stringify({action: 'move', data: move(CURRPOS, [0, -1])}))
+      ws.send(JSON.stringify({action: 'move', direction: [0, -1]}))
       return
     default:
       console.log("INVALID MOVE YOU JABRONI!");
